@@ -1,0 +1,20 @@
+version: '3.5'
+
+services:
+  zuul-api-proxy:
+    image: zuul-api-proxy:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - /data/app
+    networks:
+      - autostreet_shared
+
+
+networks:
+  autostreet_shared:
+    external: true
+    name: autostreet_shared
